@@ -2,8 +2,6 @@
 
 This is the Laravel coding test to access your skills and thought process when coming to build features in an application.
 
-Please send any questions you have through to ollie.selly@drpgroup.com
-
 Please read through the task below and send through any questions you may have before getting started. Spend a around 30 minutes working through the task. (Excluding initial Laravel setup)
 
 ## Our Expectation

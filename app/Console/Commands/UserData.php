@@ -56,7 +56,6 @@ class UserData extends Command
      */
     public function insert($data): void
     {
-
         foreach ($data['data'] as $datum) {
             User::create([
                 'id' => $datum['id'],

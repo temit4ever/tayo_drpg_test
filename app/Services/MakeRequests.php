@@ -15,7 +15,7 @@ class MakeRequests
 
     public function __construct(Client $client)
     {
-        $this->base_url = 'https://reqres.in/api/users?page=1';
+        $this->base_url = env('API_URL');
         $this->http = $client;
     }
 

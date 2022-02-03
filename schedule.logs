@@ -1,0 +1,88 @@
+
+   GuzzleHttp\Exception\ConnectException 
+
+  cURL error 35: OpenSSL SSL_connect: Connection reset by peer in connection to reqres.in:443  (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://reqres.in/api/users?page=1
+
+  at vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php:210
+    206▕         }
+    207▕ 
+    208▕         // Create a connection exception if it was a specific error code.
+    209▕         $error = isset($connectionErrors[$easy->errno])
+  ➜ 210▕             ? new ConnectException($message, $easy->request, null, $ctx)
+    211▕             : new RequestException($message, $easy->request, $easy->response, null, $ctx);
+    212▕ 
+    213▕         return P\Create::rejectionFor($error);
+    214▕     }
+
+      [2m+13 vendor frames [22m
+  14  app/Services/MakeRequests.php:29
+      GuzzleHttp\Client::request("GET", "https://reqres.in/api/users?page=1")
+
+  15  app/Console/Commands/UserData.php:44
+      App\Services\MakeRequests::getResponse()
+
+   GuzzleHttp\Exception\ConnectException 
+
+  cURL error 52: Empty reply from server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://reqres.in/api/users?page=1
+
+  at vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php:210
+    206▕         }
+    207▕ 
+    208▕         // Create a connection exception if it was a specific error code.
+    209▕         $error = isset($connectionErrors[$easy->errno])
+  ➜ 210▕             ? new ConnectException($message, $easy->request, null, $ctx)
+    211▕             : new RequestException($message, $easy->request, $easy->response, null, $ctx);
+    212▕ 
+    213▕         return P\Create::rejectionFor($error);
+    214▕     }
+
+      [2m+13 vendor frames [22m
+  14  app/Services/MakeRequests.php:29
+      GuzzleHttp\Client::request("GET", "https://reqres.in/api/users?page=1")
+
+  15  app/Console/Commands/UserData.php:44
+      App\Services\MakeRequests::getResponse()
+
+   GuzzleHttp\Exception\ConnectException 
+
+  cURL error 35: OpenSSL SSL_connect: Connection reset by peer in connection to reqres.in:443  (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://reqres.in/api/users?page=1
+
+  at vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php:210
+    206▕         }
+    207▕ 
+    208▕         // Create a connection exception if it was a specific error code.
+    209▕         $error = isset($connectionErrors[$easy->errno])
+  ➜ 210▕             ? new ConnectException($message, $easy->request, null, $ctx)
+    211▕             : new RequestException($message, $easy->request, $easy->response, null, $ctx);
+    212▕ 
+    213▕         return P\Create::rejectionFor($error);
+    214▕     }
+
+      [2m+13 vendor frames [22m
+  14  app/Services/MakeRequests.php:29
+      GuzzleHttp\Client::request("GET", "https://reqres.in/api/users?page=1")
+
+  15  app/Console/Commands/UserData.php:44
+      App\Services\MakeRequests::getResponse()
+
+   GuzzleHttp\Exception\ConnectException 
+
+  cURL error 35: OpenSSL SSL_connect: Connection reset by peer in connection to reqres.in:443  (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://reqres.in/api/users?page=1
+
+  at vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php:210
+    206▕         }
+    207▕ 
+    208▕         // Create a connection exception if it was a specific error code.
+    209▕         $error = isset($connectionErrors[$easy->errno])
+  ➜ 210▕             ? new ConnectException($message, $easy->request, null, $ctx)
+    211▕             : new RequestException($message, $easy->request, $easy->response, null, $ctx);
+    212▕ 
+    213▕         return P\Create::rejectionFor($error);
+    214▕     }
+
+      [2m+13 vendor frames [22m
+  14  app/Services/MakeRequests.php:29
+      GuzzleHttp\Client::request("GET", "https://reqres.in/api/users?page=1")
+
+  15  app/Console/Commands/UserData.php:44
+      App\Services\MakeRequests::getResponse()

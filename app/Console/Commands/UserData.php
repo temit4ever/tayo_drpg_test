@@ -56,16 +56,17 @@ class UserData extends Command
      */
     public function insert($data): void
     {
-            foreach ($data['data'] as $datum) {
-                User::create([
-                    'id' => $datum['id'],
-                    'first_name' => $datum['first_name'],
-                    'last_name' => $datum['last_name'],
-                    'email' => $datum['email'],
-                    'avatar' => $datum['avatar'],
-                    'password' => bcrypt($datum['first_name'] . $datum['last_name'])
-                ]);
-            }
+
+        foreach ($data['data'] as $datum) {
+            User::create([
+                'id' => $datum['id'],
+                'first_name' => $datum['first_name'],
+                'last_name' => $datum['last_name'],
+                'email' => $datum['email'],
+                'avatar' => $datum['avatar'],
+                'password' => bcrypt($datum['first_name'] . $datum['last_name'])
+            ]);
+        }
     }
 
     /**
@@ -78,7 +79,7 @@ class UserData extends Command
     {
         foreach ($api_data['data'] as $data) {
             $user_update = User::find($data['id']);
-            if(!empty($user_update)) {
+            if (!empty($user_update)) {
                 $user_update->update([
                     'first_name' => $data['first_name'],
                     'last_name' => $data['last_name'],

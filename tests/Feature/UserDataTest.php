@@ -2,77 +2,53 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use App\Services\MakeRequests;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use Tests\TestCase;
 
 class UserDataTest extends TestCase
 {
-    /**
-     * @throws GuzzleException
-     */
-    public function testUserApiTest(MakeRequests $makeRequests, $expected)
+  use RefreshDatabase, WithFaker;
+  private  $user;
+  public function setUp(): void
+  {
+    parent::setUp();
+    $this->user = User::factory()->create();
+  }
+
+  /**
+   */
+    public function testUserApiTest()
     {
-        $api_response = $makeRequests->getResponse();
-        $this->assertEquals($expected, $api_response);
+      //dd($this->user);
+     $this->actingAs($this->user)
+       ->getJson(route('user.show', [
+           'user' => $this->user->id
+         ])
+       )
+       ->assertStatus(200);
+
+     $this->assertDatabaseHas('users', [
+      'first_name' => 'Tee',
+    ]);
+
+     $fake_name = $this->faker->firstName;
+
+      $this->actingAs($this->user)
+        ->postJson(route('user.store'), [
+          'first_name' => 'Ola',
+          'last_name' => 'Blue',
+        ])->assertOk()
+        ->assertStatus(200);
+        //$this->assertDatabaseHas('users', ['first_name' => 'Ola']);
+
+        //dd($this->user);
+
     }
-
-    /**
-     * Provides data for testGetSalaryDate
-     *
-     * @return array[]
-     */
-    public function providerTestData(): array
-    {
-        return  [
-            [
-
-                [
-                    "id" => 1,
-                    "email" => "george.bluth@reqres.in",
-                    "first_name" => "George",
-                    "last_name" => "Bluth",
-                    "avatar" => "https://reqres.in/img/faces/1-image.jpg",
-                ],
-                [
-                    "id" => 2,
-                    "email" => "janet.weaver@reqres.in",
-                    "first_name" => "Janet",
-                    "last_name" => "Weaver",
-                    "avatar" => "https://reqres.in/img/faces/2-image.jpg",
-                ],
-                [
-                    "id" => 3,
-                    "email" => "emma.wong@reqres.in",
-                    "first_name" => "Emma",
-                    "last_name" => "Wong",
-                    "avatar" => "https://reqres.in/img/faces/3-image.jpg",
-                ],
-                [
-                    "id" => 4,
-                    "email" => "eve.holt@reqres.in",
-                    "first_name" => "Eve",
-                    "last_name" => "Holt",
-                    "avatar" => "https://reqres.in/img/faces/4-image.jpg",
-                ],
-                [
-                    "id" => 5,
-                    "email" => "charles.morris@reqres.in",
-                    "first_name" => "Charles",
-                    "last_name" => "Morris",
-                    "avatar" => "https://reqres.in/img/faces/5-image.jpg",
-                ],
-                [
-                    "id" => 6,
-                    "email" => "tracey.ramos@reqres.in",
-                    "first_name" => "Tracey",
-                    "last_name" => "Ramos",
-                    "avatar" => "https://reqres.in/img/faces/6-image.jpg",
-                ],
-            ]
-        ];
-    }
-
 }

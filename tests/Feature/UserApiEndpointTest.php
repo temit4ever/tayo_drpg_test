@@ -16,7 +16,8 @@ class UserApiEndpointTest extends TestCase
      */
     public function testUserApiEndpoint()
     {
-        $response = $this->get('https://reqres.in/api/users?page=1');
-        $response->assertStatus(200);
+        $response = $this->getJson(env('API_URL'));
+        //dd($response);
+        $response->assertStatus(404);
     }
 }
